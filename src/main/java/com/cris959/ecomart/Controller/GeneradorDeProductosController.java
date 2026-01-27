@@ -15,12 +15,37 @@ public class GeneradorDeProductosController {
         this.chatClient = chatClientBuilder.build();
     }
 
+//    @GetMapping
+//    public String generadorProductos() {
+//        try {
+//            var request = "Genera 5 productos ecologicos";
+//            return this.chatClient.prompt()
+//                    .user(request)
+//                    .call()
+//                    .content();
+//        } catch (Exception e) {
+//            e.printStackTrace(); // Esto imprimirá el error real en tu consola de IntelliJ
+//            return "Error detallado: " + e.getMessage();
+//        }
+//    }
+
     @GetMapping
     public String generadorProductos() {
-        var request = "Genera 5 productos ecologicos";
-        return this.chatClient.prompt()
-                .user(request)
-                .call()
-                .content();
+        try {
+            // El método prompt() inicia la petición a Gemini
+            return this.chatClient.prompt()
+                    .user("Genera una lista de 5 productos ecológicos para una tienda online")
+                    .call()
+                    .content();
+        } catch (Exception e) {
+            // Si ves "Failed to generate content" aquí, revisa la consola de IntelliJ
+            // Busca una línea que diga "Cause: ..." para ver el error real de Google
+            e.printStackTrace();
+            return "Error al conectar con Gemini: " + e.getLocalizedMessage();
+        }
+    }
+    @GetMapping("/test")
+    public String test() {
+        return "El controlador funciona";
     }
 }
