@@ -1,5 +1,9 @@
 package com.cris959.ecomart.controller;
 
+import com.knuddels.jtokkit.Encodings;
+import com.knuddels.jtokkit.api.Encoding;
+import com.knuddels.jtokkit.api.EncodingRegistry;
+import com.knuddels.jtokkit.api.EncodingType;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,6 +57,11 @@ public class CategorizadorDeProductosController {
                     .options(ChatOptions.builder().temperature(0.90).build())
                     .call()
                     .content();
-
     }
+
+//    private int contadorDeTokens(String system, String user) {
+//        EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
+//        Encoding encoding = registry.getEncoding(EncodingType.CL100K_BASE);
+//        return encoding.countTokens(system + user);
+//    }
 }
