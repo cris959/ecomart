@@ -1,4 +1,4 @@
-package com.cris959.ecomart.Controller;
+package com.cris959.ecomart.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
@@ -50,7 +50,7 @@ public class CategorizadorDeProductosController {
             return this.chatClient.prompt()
                     .system(system)
                     .user(producto)
-                    .options(ChatOptions.builder().temperature(0.82).build())
+                    .options(ChatOptions.builder().temperature(0.90).build())
                     .call()
                     .content();
 

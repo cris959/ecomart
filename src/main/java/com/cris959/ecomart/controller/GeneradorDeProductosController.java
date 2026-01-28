@@ -1,6 +1,7 @@
-package com.cris959.ecomart.Controller;
+package com.cris959.ecomart.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.google.genai.GoogleGenAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +12,17 @@ public class GeneradorDeProductosController {
 
     private final ChatClient chatClient;
 
+//    public GeneradorDeProductosController(ChatClient.Builder chatClientBuilder) {
+//        this.chatClient = chatClientBuilder.build();
+//    }
+
     public GeneradorDeProductosController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+        // Forzamos el modelo aquí, pero con un pequeño truco de nombre
+        this.chatClient = chatClientBuilder
+                .defaultOptions(GoogleGenAiChatOptions.builder()
+                        .model("gemini-3-flash-preview")
+                        .build())
+                .build();
     }
 
     @GetMapping
