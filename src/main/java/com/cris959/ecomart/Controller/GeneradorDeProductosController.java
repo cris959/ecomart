@@ -15,20 +15,6 @@ public class GeneradorDeProductosController {
         this.chatClient = chatClientBuilder.build();
     }
 
-//    @GetMapping
-//    public String generadorProductos() {
-//        try {
-//            var request = "Genera 5 productos ecologicos";
-//            return this.chatClient.prompt()
-//                    .user(request)
-//                    .call()
-//                    .content();
-//        } catch (Exception e) {
-//            e.printStackTrace(); // Esto imprimirá el error real en tu consola de IntelliJ
-//            return "Error detallado: " + e.getMessage();
-//        }
-//    }
-
     @GetMapping
     public String generadorProductos() {
         try {
