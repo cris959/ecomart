@@ -12,10 +12,6 @@ public class GeneradorDeProductosController {
 
     private final ChatClient chatClient;
 
-//    public GeneradorDeProductosController(ChatClient.Builder chatClientBuilder) {
-//        this.chatClient = chatClientBuilder.build();
-//    }
-
     public GeneradorDeProductosController(ChatClient.Builder chatClientBuilder) {
         // Forzamos el modelo aquí, pero con un pequeño truco de nombre
         this.chatClient = chatClientBuilder

@@ -1,9 +1,5 @@
 package com.cris959.ecomart.controller;
 
-import com.knuddels.jtokkit.Encodings;
-import com.knuddels.jtokkit.api.Encoding;
-import com.knuddels.jtokkit.api.EncodingRegistry;
-import com.knuddels.jtokkit.api.EncodingType;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,19 +34,7 @@ public class CategorizadorDeProductosController {
     2. Usa mayúsculas para las categorías principales.
     3. No añadas introducciones como "Aquí tienes la clasificación". Ve directo al grano.
     """;
-// Segundo ** prompt **
-//    """
-//    Eres un experto en gestión de inventarios y categorización de e-commerce.
-//    Tu tarea es recibir el nombre de un producto y devolver ÚNICAMENTE la categoría principal y la subcategoría en formato JSON.
-//
-//    Reglas:
-//    1. Si el producto es ambiguo, elige la categoría más probable.
-//    2. Responde exclusivamente en el siguiente formato: {"categoria": "nombre", "subcategoria": "nombre"}.
-//    3. No incluyas explicaciones, saludos ni puntos finales.
-//    4. Usa un tono técnico y estandarizado.
-//    """;
-//                 **   Primer prompt **
-//                    "Tu eres un categorizador de productos";
+
             return this.chatClient.prompt()
                     .system(system)
                     .user(producto)
@@ -58,10 +42,4 @@ public class CategorizadorDeProductosController {
                     .call()
                     .content();
     }
-
-//    private int contadorDeTokens(String system, String user) {
-//        EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
-//        Encoding encoding = registry.getEncoding(EncodingType.CL100K_BASE);
-//        return encoding.countTokens(system + user);
-//    }
 }
